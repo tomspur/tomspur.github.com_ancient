@@ -1,0 +1,187 @@
+<!doctype html>
+<!-- https://github.com/paulirish/html5-boilerplate/blob/master/index.html -->
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="">
+
+  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+       Remove this if you use the .htaccess -->
+  <meta http-equiv="X-UA-Compatible" content="">
+
+  <!-- encoding must be specified within the first 512 bytes
+        www.whatwg.org/specs/web-apps/current-work/multipage/semantics.html#charset -->
+
+  <!-- meta element for compatibility mode needs to be before
+        all elements except title & meta
+        msdn.microsoft.com/en-us/library/cc288325(VS.85).aspx -->
+  <!-- Chrome Frame is only invoked if meta element for
+        compatibility mode is within the first 1K bytes
+        code.google.com/p/chromium/issues/detail?id=23003 -->
+
+  <title>Compile flags for gfortran</title>
+  <meta name="description" content="Default gfortran flags
+">
+  <meta name="author" content="Thomas Spura">
+
+  <!--  Mobile viewport optimized: j.mp/bplateviewport -->
+  <meta name="viewport" content="">
+
+    <!-- Place favicon.ico & apple-touch-icon.png
+        in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+    <link rel="stylesheet" href="/media/css/site.css">
+  <link rel="stylesheet" href="/media/css/syntax.css">
+  
+    <!-- All JavaScript at the bottom, except for Modernizr which
+        enables HTML5 elements & feature detects -->
+    <script src="/media/js/libs/modernizr-1.7.min.js"></script>
+    </head>
+<body id="gfortran-flags">
+    <div id="container">
+            <div id="main" role="main">
+          <header class="banner clearfix">
+          <h1>Home page of </h1>
+            <h3>Thomas Spura</h3>                              <nav class=main_nav>
+    <ul>
+                <li>
+            <a title="Home Page"
+                class="button white home"
+                href="/index.html">
+                Home
+            </a>
+        </li>        <li>
+            <a title="Research"
+                class="button white research"
+                href="/research">
+                Research
+            </a>
+        </li>        <li>
+            <a title="Blog"
+                class="button white blog"
+                href="/blog">
+                Blog
+            </a>
+        </li>        <li>
+            <a title="About"
+                class="button white about"
+                href="/about.html">
+                About
+            </a>
+        </li>    </ul>
+</nav>
+                    </header>
+          <section class="content">
+          <article class="post">
+<nav class="post_nav">
+<a class="backlink" href="/blog/2012">Back to list</a>
+<a class="prev disabled"
+    title=""
+    >
+    Previous
+</a>
+
+<a class="next"
+    title="Automatic Backups with rsync"
+        href="/blog/2011/backups.html">
+    Next
+</a>
+
+<br>
+<div id="twitter_share">
+<a href="http://twitter.com/share"
+    class="twitter-share-button"
+    data-count="vertical"
+    data-via="">Tweet</a>
+    <script type="text/javascript"
+        src="http://platform.twitter.com/widgets.js"></script>
+</div>
+<div id="facebook_like">
+<iframe src="http://www.facebook.com/plugins/like.php?href&amp;layout=box_count&amp;show_faces=false&amp;width=450&amp;action=like&amp;font=arial&amp;colorscheme=light&amp;height=65"
+            scrolling="no"
+            frameborder="0"
+            style="border:none; overflow:hidden; width:450px; height:65px;"
+            allowTransparency="true"></iframe>
+</div>
+</nav>
+<h1 class="title">
+    <a href="/blog/2012/gfortran-flags.html">
+        Compile flags for gfortran
+    </a>
+</h1>
+<time datetime="2012-04-29">
+    Posted: Sun, 29 Apr 2012
+</time>
+
+<ul class="tags clear">
+<li>
+    <a class="small" href="/blog/tags/fortran.html">
+        fortran
+    </a>
+</li>
+</ul>
+<p>When compiling Fortran, you cannot be sure, that gfortran sees the code the
+same way like you. For instance, when you assign <code>1.</code> to a <code>real(8)</code> variable
+and don&#8216;t notice, that <code>1.</code> is only <code>real(4)</code>.</p>
+<p>But when compiling with some flags from this blog, gfortran will warn you about
+such issues.
+You can find more information about all flags in the <a href="http://linux.die.net/man/1/gfortran">man page</a> of <a href="http://gcc.gnu.org/wiki/GFortran">gfortran</a></p>
+<h2>Standard&nbsp;warnings</h2>
+<ul>
+<li><code>-Wall</code> enables a predefined set of standard&nbsp;warnings.</li>
+<li><code>-pedantic</code> warns about some nonstandard&nbsp;practices.</li>
+</ul>
+<h2>Warnings, that might show wrong&nbsp;assumptions/code</h2>
+<ul>
+<li><code>-Wcharacter-truncation</code> warns, when strings might get&nbsp;truncated.</li>
+<li><code>-Wconversion-extra</code> warns about even more conversations than enabled with <code>-Wall</code>.</li>
+<li><code>-fimplicit-none</code> adds a <code>implicit none</code> to all functions by default. Always declare <span class="caps">ALL</span> variables&nbsp;explicit!</li>
+<li><code>-Wintrinsic-shadow</code> warns, when an intrinsic function is shadowed by a local&nbsp;variable/function.</li>
+<li><code>-Wsurprising</code> warns about code that might indicate an&nbsp;error.</li>
+</ul>
+<h2>Warnings for slow&nbsp;code</h2>
+<ul>
+<li><code>-Warray-temporaries</code> warns when temporary arrays are created, so you can maybe optimize them&nbsp;away.</li>
+</ul>
+<h2>Development&nbsp;checks</h2>
+<p>Flags in this section adds runtime checks, which make the code slower. So only add them for testing the program and not for a final&nbsp;build.</p>
+<ul>
+<li><code>-fcheck=bounds,mem</code> adds checks for <code>IndexError</code>s and checks for memory allocation at&nbsp;runtime.</li>
+<li><code>-fcheck=all</code> adds even more runtime checks, which one: see <a href="http://linux.die.net/man/1/gfortran">man&nbsp;page</a></li>
+</ul></article>          </section>
+      </div>
+      </div> <!--! end of #container -->
+  <footer>
+      Powered by <a href="http://ringce.com/hyde">hyde</a>.
+  </footer>
+      <!-- Javascript at the bottom for fast page loading -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
+  
+    
+
+  <!--[if lt IE 7 ]>
+    <script src="js/libs/dd_belatedpng.js"></script>
+    <script>DD_belatedPNG.fix('img, .png_bg'); // Fix any <img> or .png_bg bg-images. Also, please read goo.gl/mZiyb </script>
+  <![endif]-->
+
+    <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet
+       change the UA-XXXXX-X to be your site's ID -->
+<script>
+    var _gaq = [['_setAccount', 'UA-25605220-1'], ['_trackPageview']];
+    (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+</script>
+  
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>
+        blog excerpts feed by Thomas Spura    </title>
+        <link href="/blog/excerpts.xml" rel="self" />
+    
+        <link href="/"/>
+    
+        
+    <updated>2012-08-11T01:38:14Z</updated>
+
+    <id>/blog/excerpts.xml/</id>
+
+            <entry>
+            <title type="html">Compile flags for gfortran</title>
+            <author><name>Thomas Spura</name></author>
+            <link href="/blog/2012/gfortran-flags.html"/>
+            <updated>2012-04-29T17:45:00Z</updated>
+            <published>2012-04-29T17:45:00Z</published>
+            <id>/blog/2012/gfortran-flags.html</id>
+                        <category   scheme="/blog/tags"
+                        term="fortran"
+                        label="Fortran" />
+            
+            <content type="html">
+                
+                &lt;p&gt;When compiling Fortran, you cannot be sure, that gfortran sees the code the
+same way like you. For instance, when you assign &lt;code&gt;1.&lt;/code&gt; to a &lt;code&gt;real(8)&lt;/code&gt; variable
+and don&amp;#8216;t notice, that &lt;code&gt;1.&lt;/code&gt; is only &lt;code&gt;real(4)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But when compiling with some flags from this blog, gfortran will warn you about
+such&amp;nbsp;issues.&lt;/p&gt;            </content>
+        </entry>
+            <entry>
+            <title type="html">Automatic Backups with rsync</title>
+            <author><name>Thomas Spura</name></author>
+            <link href="/blog/2011/backups.html"/>
+            <updated>2011-12-25T16:00:29Z</updated>
+            <published>2011-12-25T16:00:29Z</published>
+            <id>/blog/2011/backups.html</id>
+                        <category   scheme="/blog/tags"
+                        term="workflow"
+                        label="Workflow" />
+            
+            <content type="html">
+                
+                &lt;p&gt;A standard task is to do automatic&amp;nbsp;backups.&lt;/p&gt;
+&lt;p&gt;This post will guide you to the basic steps, that are needed to automatically
+and efficiently backup your data to a remote&amp;nbsp;server.&lt;/p&gt;            </content>
+        </entry>
+    </feed>

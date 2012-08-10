@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>
+        blog full text feed by Thomas Spura    </title>
+        <link href="/blog/atom.xml" rel="self" />
+    
+        <link href="/"/>
+    
+        
+    <updated>2012-08-11T01:38:14Z</updated>
+
+    <id>/blog/atom.xml/</id>
+
+            <entry>
+            <title type="html">Compile flags for gfortran</title>
+            <author><name>Thomas Spura</name></author>
+            <link href="/blog/2012/gfortran-flags.html"/>
+            <updated>2012-04-29T17:45:00Z</updated>
+            <published>2012-04-29T17:45:00Z</published>
+            <id>/blog/2012/gfortran-flags.html</id>
+                        <category   scheme="/blog/tags"
+                        term="fortran"
+                        label="Fortran" />
+            
+            <content type="html">
+                                            </content>
+        </entry>
+            <entry>
+            <title type="html">Automatic Backups with rsync</title>
+            <author><name>Thomas Spura</name></author>
+            <link href="/blog/2011/backups.html"/>
+            <updated>2011-12-25T16:00:29Z</updated>
+            <published>2011-12-25T16:00:29Z</published>
+            <id>/blog/2011/backups.html</id>
+                        <category   scheme="/blog/tags"
+                        term="workflow"
+                        label="Workflow" />
+            
+            <content type="html">
+                                            </content>
+        </entry>
+    </feed>
