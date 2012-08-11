@@ -22,8 +22,8 @@
         compatibility mode is within the first 1K bytes
         code.google.com/p/chromium/issues/detail?id=23003 -->
 
-  <title></title>
-  <meta name="description" content="">
+  <title>Home page of Thomas Spura | About</title>
+  <meta name="description" content="About Thomas">
   <meta name="author" content="Thomas Spura">
 
   <!--  Mobile viewport optimized: j.mp/bplateviewport -->
@@ -40,7 +40,7 @@
         enables HTML5 elements & feature detects -->
     <script src="/media/js/libs/modernizr-1.7.min.js"></script>
     </head>
-<body id="workflow">
+<body id="asdf">
     <div id="container">
             <div id="main" role="main">
           <header class="banner clearfix">
@@ -75,23 +75,47 @@
 </nav>
                     </header>
           <section class="content">
-          <section class="archives">
-<h1 class="tag title">workflow</h1>
-<ul class="posts clear">
-<li class="post clear">
-    <time datetime="2011-12-25">
-        Sun, 25 Dec 2011
-    </time>
-    <a href="/blog/2011/backups.html">Automatic Backups with rsync</a>
-        <ul class="tags">
-        <li>
-        <a class="small" href="/blog/tags/workflow.html">
-            workflow
-        </a>
-    </li>
-        </ul>
-    </li></ul>
-</section>
+          Hi, I'm Thomas Spura and I'm studying Physics at [University of Mainz][JGU].
+
+In case you want to contact me:
+
+[JGU]: http://www.uni-mainz.de
+
+<table rules="all"
+width="70%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<tbody>
+<tr>
+<td align="left" width="50%" valign="top"><p>Address</p></td>
+<td align="left" width="50%" valign="top"><p>Staudinger Weg 7,
+               55128 Mainz</p></td>
+</tr>
+<tr>
+<td align="left" width="50%" valign="top"><p>Room</p></td>
+<td align="left" width="50%" valign="top"><p>01-523</p></td>
+</tr>
+<tr>
+<td align="left" width="50%" valign="top"><p>Phone</p></td>
+<td align="left" width="50%" valign="top"><p>+49-6131-39-24214</p></td>
+</tr>
+<tr>
+<td align="left" width="50%" valign="top"><p>Mail</p></td>
+<td align="left" width="50%" valign="top"><p>spurath_a_students.uni-mainz.de</p></td>
+</tr>
+</tbody>
+</table>
+
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<g:plus href="https://plus.google.com/110909423880295359716" rel="publisher" width="300" height="69" theme="light"></g:plus>
+
+<script type="text/javascript">gapi.plus.go();</script>
           </section>
       </div>
       </div> <!--! end of #container -->
