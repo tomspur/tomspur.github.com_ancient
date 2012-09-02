@@ -1,0 +1,195 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+
+  <title>Manage upstream repositories in user space with virtualenv</title>
+  <meta name="description" content="Bash script to manage source repositories in user space">
+  <meta name="author" content="Thomas Spura">
+  <meta name="keywords" content="thomas spura, fedora, python, computational science, physics, chemistry, water">
+  <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico & apple-touch-icon.png
+        in the root of your domain and delete these references -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  
+    <link type="text/css" rel="stylesheet" href="/media/css/site.css">
+  <link type="text/css" rel="stylesheet" href="/media/css/syntax.css">
+  
+      </head>
+<body id="manage-clones">
+    <div id="container">
+            <div id="main" role="main">
+          <header class="banner clearfix">
+          <h1>Home page of </h1>
+            <h3>Thomas Spura</h3>                              <nav class=main_nav>
+    <ul>
+                <li>
+            <a title="Home Page"
+                class="button white home"
+                href="/index.html">
+                Home
+            </a>
+        </li>        <li>
+            <a title="Research"
+                class="button white research"
+                href="/research">
+                Research
+            </a>
+        </li>        <li>
+            <a title="Blog"
+                class="button white blog"
+                href="/blog">
+                Blog
+            </a>
+        </li>        <li>
+            <a title="About"
+                class="button white about"
+                href="/about.html">
+                About
+            </a>
+        </li>    </ul>
+</nav>
+                    </header>
+          <section class="content">
+          <article class="post">
+<nav class="post_nav">
+<a class="backlink" href="/blog/2012">Back to list</a>
+<a class="prev disabled"
+    title=""
+    >
+    Previous
+</a>
+
+<a class="next"
+    title="Compile flags for gfortran"
+        href="/blog/2012/gfortran-flags.html">
+    Next
+</a>
+
+<br>
+<div class="g-plusone" data-annotation="none"></div>
+</nav>
+<h1 class="title">
+    <a href="/blog/2012/manage-clones.html">
+        Manage upstream repositories in user space with virtualenv
+    </a>
+</h1>
+<time datetime="2012-09-03">
+    Posted: Mon, 03 Sep 2012
+</time>
+
+<ul class="tags clear">
+<li>
+    <a class="small" href="/blog/tags/bash.html">
+        bash
+    </a>
+</li>
+<li>
+    <a class="small" href="/blog/tags/python.html">
+        python
+    </a>
+</li>
+<li>
+    <a class="small" href="/blog/tags/virtualenv.html">
+        virtualenv
+    </a>
+</li>
+<li>
+    <a class="small" href="/blog/tags/scm.html">
+        scm
+    </a>
+</li>
+<li>
+    <a class="small" href="/blog/tags/workflow.html">
+        workflow
+    </a>
+</li>
+</ul>
+<p>Most software packages depend on other packages and it&#8216;s not easy to keep
+track of each single&nbsp;dependency.</p>
+<p>But help is there. virtualenv and a simple bash script can assist you with
+most of that&nbsp;task.</p>
+<h2>Common problems&nbsp;are:</h2>
+<ul>
+<li>The packages need to be built and installed in which&nbsp;order?</li>
+<li>How can you create an (<em>almost</em>) isolated&nbsp;environment?</li>
+<li>How can you recreate a messed up environment or simply update the
+  packages to their latest&nbsp;versions?</li>
+</ul>
+<p>To solve these tasks, I wrote a little script, which is available at
+<a href="https://github.com/tomspur/clones">github</a>:</p>
+<h3>Dependency&nbsp;ordering</h3>
+<p>As most packages don&#8216;t write their dependencies explicitely in a parsable
+way, this task is doomed to be handled&nbsp;manually.</p>
+<p>The script expects you to maintain a .repo description of the dependencies.
+The .repo file has exact three collums, where the first collum names the
+source control system (scm), the second one is a human readable identifier
+of the package and the last collum contains a link to the upstream scm&nbsp;repository.</p>
+<h3>Creating an (<em>almost</em>) isolated&nbsp;environment</h3>
+<p>For python software, there is <a href="https://github.com/pypa/virtualenv">virtualenv</a>, which does exactly that:
+Creating an isolated environment for&nbsp;python.</p>
+<p>But at least all autotools based packages can be tweaked easily to also
+install into the same virtualenv as other python based package:
+<code>./configure --prefix=$VIRTUAL_ENV</code>
+This is what the script will to, when adding an autotools based package to
+the .repo&nbsp;file.</p>
+<h3>&#8222;Binstalling&#8220; the&nbsp;packages:</h3>
+<p>When running <code>./manage.sh clone $file.repo</code> all packages will be cloned into
+the folder <code>$file</code>. Afterwards a <code>./manage.sh binstall $file.repo</code> will
+automatically detect, if one needs to build and install the package the autotools way (<code>./configure &amp;&amp; make &amp;&amp; makeinstall</code>) or the python way
+(<code>python setup.py build &amp;&amp; python setup.py install</code>).</p>
+<h3>Example&nbsp;workflow:</h3>
+<p>Currently, there is a working <a href="http://ipython.org/">ipython</a>.repo and a <a href="http://yt-project.org/">yt</a>.repo,
+which both assume that you have already python around.
+In case, where the required python version is different from the
+host system, one needs to add that too to the .repo file to bootstrap a
+new main python&nbsp;package.</p>
+<p>An example to initially install <a href="http://ipython.org/">ipython</a> with main dependencies would&nbsp;be:</p>
+<pre><code>$ ./manage.sh clone virtualenv.repo # bootstrap virtualenv
+[git/hg cloning in progress]
+$ ./manage.sh create_env ipython    # create ipython virtualenv
+$ . ~/venv/ipython/bin/activate     # activate it
+$ ./manage.sh clone ipython.repo    # download ipython and dependencies
+[git/hg cloning in progress]
+$ ./manage.sh binstall ipython.repo # build and install it into ~/venv/ipython/
+[configuring / setup.py building/installing]
+</code></pre>
+<p>When you want to update to the latest version of all dependencies again&nbsp;do:</p>
+<pre><code>$ ./manage.sh pull ipython.repo     # pull updates of all packages
+[git/hg pulling in progress]
+$ ./manage.sh binstall ipython.repo # rewrite installation at ~/venv/ipython
+[configuring / setup.py building/installing]
+</code></pre>
+<p>When the virtualenv is really messed up, it&#8216;s easy to delete the environment at ~/venv/ipython again and create/activate/populate the virtualenv again without the need to do update the packages system wide in /usr/local/ or create rpm packages, which can be installed in&nbsp;turn.</p></article>          </section>
+      </div>
+      </div> <!--! end of #container -->
+  <footer>
+      <a href="/blog/atom.xml"><img src="/media/images/RSS.svg" height="12" width="12" alt="RSS"></a> |
+      Powered by <a href="https://github.com/hyde/hyde">hyde</a>
+  </footer>
+      <!-- Javascript at the bottom for fast page loading -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  
+    
+    <!-- asynchronous google analytics: mathiasbynens.be/notes/async-analytics-snippet -->
+<script>
+    var _gaq = [['_setAccount', 'UA-34026287-1'], ['_trackPageview']];
+    (function(d, t) {
+    var g = d.createElement(t),
+        s = d.getElementsByTagName(t)[0];
+    g.async = true;
+    g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g, s);
+    })(document, 'script');
+</script>
+<script type="text/javascript">
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+  
+  </body>
+</html>
