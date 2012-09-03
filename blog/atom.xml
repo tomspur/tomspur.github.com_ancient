@@ -7,7 +7,7 @@
         <link href="/"/>
     
         
-    <updated>2012-09-03T01:38:05Z</updated>
+    <updated>2012-09-03T19:57:27Z</updated>
 
     <id>/blog/atom.xml/</id>
 
@@ -35,7 +35,11 @@
                         label="Workflow" />
             
             <content type="html">
-                                            </content>
+                                &lt;p&gt;Most software packages depend on other packages and it&amp;#8216;s not easy to keep
+track of each single&amp;nbsp;dependency.&lt;/p&gt;
+&lt;p&gt;But help is there. virtualenv and a simple bash script can assist you with
+most of that&amp;nbsp;task.&lt;/p&gt;
+                            </content>
         </entry>
             <entry>
             <title type="html">Compile flags for gfortran</title>
@@ -49,7 +53,12 @@
                         label="Fortran" />
             
             <content type="html">
-                                            </content>
+                                &lt;p&gt;When compiling Fortran, you cannot be sure, that gfortran sees the code the
+same way like you. For instance, when you assign &lt;code&gt;1.&lt;/code&gt; to a &lt;code&gt;real(8)&lt;/code&gt; variable
+and don&amp;#8216;t notice, that &lt;code&gt;1.&lt;/code&gt; is only &lt;code&gt;real(4)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;But when compiling with some flags from this blog, gfortran will warn you about
+such&amp;nbsp;issues.&lt;/p&gt;
+                            </content>
         </entry>
             <entry>
             <title type="html">Automatic Backups with rsync</title>
@@ -63,6 +72,9 @@
                         label="Workflow" />
             
             <content type="html">
-                                            </content>
+                                &lt;p&gt;A standard task is to do automatic&amp;nbsp;backups.&lt;/p&gt;
+&lt;p&gt;This post will guide you to the basic steps, that are needed to automatically
+and efficiently backup your data to a remote&amp;nbsp;server.&lt;/p&gt;
+                            </content>
         </entry>
     </feed>
