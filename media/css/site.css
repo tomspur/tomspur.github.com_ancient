@@ -61,7 +61,7 @@ body{
 }
 
 #container{
-    background-color: #eaeaea;
+    background-color: #ffffff;
     width: 640px;
     margin: 0 auto;
     padding: 12px;
@@ -326,7 +326,7 @@ h1 a, h2 a, h3 a{
 }
 
 nav.post_nav{
-    background-color: #efefef;
+    background-color: #ffffff;
     position: fixed;
     width: 124px;
     margin-left: -186px;
