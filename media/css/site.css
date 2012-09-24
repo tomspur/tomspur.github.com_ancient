@@ -45,7 +45,6 @@ table {
 a {
     color: #37e;
     text-decoration: underline;
-    text-shadow: 0px 2px 0px #fff;
 }
 
 a:hover{
@@ -57,7 +56,6 @@ body{
     background-color: #efefef;
     padding: 0;
     margin: 0;
-    text-shadow: 0px 2px 0px #efefef;
 }
 
 #container{
@@ -72,7 +70,6 @@ footer{
     font-size: 10px;
     text-align: center;
     margin-top: 24px;
-    text-shadow: 0px 2px 0px #fff;
 }
 
 /* Button styles from the awesome: http://www.webdesignerwall.com/demo/css-buttons.html */
@@ -87,7 +84,6 @@ footer{
     text-decoration: none;
     font: 14px/100% Arial, Helvetica, sans-serif;
     padding: .5em 2em .55em;
-    text-shadow: 0 1px 1px rgba(0,0,0,.3);
     border-radius: .5em;
     box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
@@ -378,7 +374,6 @@ a.backlink:hover, a.prev:hover, a.next:hover{
 .post_nav a{
     color: #666;
     text-decoration: none;
-    text-shadow: 0px 2px 0px #fff;
 }
 
 .post_nav div{
@@ -402,7 +397,6 @@ a.backlink:hover, a.prev:hover, a.next:hover{
 
 .archives li.post time{
     color: #999;
-    text-shadow: 0px 2px 0px #fff;
     margin-right: 24px;
     display:block;
     float: left;
